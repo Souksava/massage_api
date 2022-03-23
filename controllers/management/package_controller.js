@@ -87,6 +87,9 @@ module.exports = {
         let shopID = req.params.shopID;
         let page = req.params.page;
         let conn, resp;
+        if(search == "null"){
+            search = "";
+        }
         try {
             conn = await pool.getConnection();
             resp = await conn.query("call select_package_limit(?,?,?)",
@@ -108,6 +111,9 @@ module.exports = {
         let search = req.params.search;
         let shopID = req.params.shopID;
         let conn, resp;
+        if(search == "null"){
+            search = "";
+        }
         try {
             conn = await pool.getConnection();
             resp = await conn.query("call select_package_count(?,?)",
@@ -128,6 +134,9 @@ module.exports = {
         let search = req.params.search;
         let shopID = req.params.shopID;
         let conn, resp;
+        if(search == "null"){
+            search = "";
+        }
         try {
             conn = await pool.getConnection();
             resp = await conn.query("call select_package(?,?)",
