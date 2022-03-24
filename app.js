@@ -6,6 +6,7 @@ var logger = require('morgan');
 var cors = require('cors');
 var indexRouter = require('./routes/index');
 var employeeRouter = require('./routes/employee');
+var exchangeRouter = require('./routes/exchange');
 var massageTypeRouter = require('./routes/massage_category');
 var packageMassageRouter = require('./routes/package_massage');
 var payMassageRouter = require('./routes/pay_massage');
@@ -29,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/api/v1/employee', employeeRouter);
+app.use('/api/v1/exchange', exchangeRouter);
 app.use('/api/v1/massagecategory', massageTypeRouter);
 app.use('/api/v1/package', packageMassageRouter);
 app.use('/api/v1/pay', payMassageRouter);
