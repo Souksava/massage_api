@@ -133,4 +133,29 @@ module.exports = {
             res.json(resp[0]);
         }
     },
+    AllCategory: async (req, res) => {
+        let search = req.params.search;
+        let shopID = req.params.shopID;
+        let page = req.params.page;
+        let conn, resp;
+        if(search == "null"){
+            search = "";
+        }
+        try {
+            conn = await pool.getConnection();
+            resp = await conn.query("call select_massage_category(?,?)",
+                [
+                    "%" + search + "%",
+                    shopID,
+                ]
+            );
+        } catch (error) {
+            conn.end();
+            return res.status(500).json(error);
+        } finally {
+            if (conn) conn.release();
+            console.log(resp[0]);
+            res.json(resp[0]);
+        }
+    },
 }

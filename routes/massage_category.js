@@ -1,4 +1,4 @@
-const { InsertCategory, UpdateCategory, DeleteCategory, SelectCategory, CountCategory } = require('../controllers/management/massage_category_controller');
+const { InsertCategory, UpdateCategory, DeleteCategory, SelectCategory, CountCategory, AllCategory } = require('../controllers/management/massage_category_controller');
 const { checkToken } = require('../controllers/auth/verify_token_validate');
 var express = require('express');
 var router = express.Router();
@@ -7,6 +7,7 @@ router.get('/', function (req, res, next) {
   res.json('massage Category');
 });
 router.get("/view/:search/:shopID/:page", checkToken, SelectCategory);
+router.get("/all/:search/:shopID", checkToken, AllCategory);
 router.get("/count/:search/:shopID", checkToken, CountCategory);
 router.post("/create", checkToken, InsertCategory);
 router.put("/update", checkToken, UpdateCategory);
