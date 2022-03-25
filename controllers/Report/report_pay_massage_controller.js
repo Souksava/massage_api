@@ -7,6 +7,9 @@ module.exports = {
         let shopID = req.params.shopID;
         let page = req.params.page;
         let conn, resp;
+        if(paySTT == "null"){
+            paySTT = "%%";
+        }
         try {
             conn = await pool.getConnection();
             resp = await conn.query("call report_pay_massage_limit(?,?,?,?,?)",
@@ -34,6 +37,9 @@ module.exports = {
         let paySTT = req.params.paySTT;
         let shopID = req.params.shopID;
         let conn, resp;
+        if(paySTT == "null"){
+            paySTT = "%%";
+        }
         try {
             conn = await pool.getConnection();
             resp = await conn.query("call report_pay_massage(?,?,?,?)",
@@ -61,6 +67,9 @@ module.exports = {
         let paySTT = req.params.paySTT;
         let shopID = req.params.shopID;
         let conn, resp;
+        if(paySTT == "null"){
+            paySTT = "%%";
+        }
         try {
             conn = await pool.getConnection();
             resp = await conn.query("call report_pay_massage_total(?,?,?,?)",
