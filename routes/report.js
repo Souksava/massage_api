@@ -1,5 +1,6 @@
 const { ReportPayMassage, ReportPayMassageAll, ReportPayMassageTotal, ReportPayMassPrint } = require('../controllers/Report/report_pay_massage_controller');
 const { ReportPayMassageDetail, ReportPayMassageDetailAll, ReportPayMassageDetailTotal } = require('../controllers/Report/report_pay_massagedetail_controller');
+const { ReportMonthly, ReportYearly } = require('../controllers/Report/report_graph_controller');
 const { checkToken } = require('../controllers/auth/verify_token_validate');
 var express = require('express');
 var router = express.Router();
@@ -18,4 +19,8 @@ router.get("/paymassagedetail/:date1/:date2/:paySTT/:shopID/:page", checkToken, 
 router.get("/paymassagedetailall/:date1/:date2/:paySTT/:shopID", checkToken, ReportPayMassageDetailAll);
 router.get("/paymassagedetailtotal/:date1/:date2/:paySTT/:shopID", checkToken, ReportPayMassageDetailTotal);
 // End Pay Massage Detail
+router.get("/reportmonthly/:shopID", checkToken, ReportMonthly);
+router.get("/reportyearly/:shopID", checkToken, ReportYearly);
+
+
 module.exports = router;

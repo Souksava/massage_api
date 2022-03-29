@@ -14,6 +14,7 @@ var roomTypeRouter = require('./routes/room_type');
 var roomRouter = require('./routes/room');
 var usernameRouter = require('./routes/username');
 var authenRouter = require('./routes/authen');
+var shopsRouter = require('./routes/shop');
 var reportRouter = require('./routes/report');
 
 var app = express();
@@ -38,6 +39,7 @@ app.use('/api/v1/roomtype', roomTypeRouter);
 app.use('/api/v1/room', roomRouter);
 app.use('/api/v1/username', usernameRouter);
 app.use('/api/v1/authen', authenRouter);
+app.use('/api/v1/shop', shopsRouter);
 app.use('/api/v1/report', reportRouter);
 
 // catch 404 and forward to error handler
