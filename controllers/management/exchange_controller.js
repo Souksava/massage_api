@@ -31,16 +31,17 @@ module.exports = {
         }
     },
     UpdateExchange: async (req, res) => {
-        let { excID, rate, rateBuy, rateSell } = req.body;
+        let { excID, rate, rateBuy, rateSell, shopID } = req.body;
         let conn, resp;
         try {
             conn = await pool.getConnection();
-            resp = await conn.query("call exchange_update(?,?,?,?)",
+            resp = await conn.query("call exchange_update(?,?,?,?,?)",
                 [
                     excID,
                     rate,
                     rateBuy,
-                    rateSell
+                    rateSell,
+                    shopID
                 ]
             );
             // ຮັບເງື່ອນໄຂຕ່າງໆທີ່ດາຕ້າສົ່ງມາໃຫ້
