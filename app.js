@@ -16,6 +16,8 @@ var usernameRouter = require('./routes/username');
 var authenRouter = require('./routes/authen');
 var shopsRouter = require('./routes/shop');
 var reportRouter = require('./routes/report');
+var perzenEmpRouter = require('./routes/perzen_emp');
+var billRouter = require('./routes/bill');
 
 var app = express();
 
@@ -41,14 +43,53 @@ app.use('/api/v1/username', usernameRouter);
 app.use('/api/v1/authen', authenRouter);
 app.use('/api/v1/shop', shopsRouter);
 app.use('/api/v1/report', reportRouter);
+app.use('/api/v1/perzenemp', perzenEmpRouter);
+app.use('/api/v1/bill', billRouter);
 
+
+
+app.get('*', function (req, res) {
+  let resp = {
+    status: 404,
+    msg: "path not found"
+  }
+  res.status(404).send(resp);
+});
+app.post('*', function (req, res) {
+  let resp = {
+    status: 404,
+    msg: "path not found"
+  }
+  res.status(404).send(resp);
+});
+app.put('*', function (req, res) {
+  let resp = {
+    status: 404,
+    msg: "path not found"
+  }
+  res.status(404).send(resp);
+});
+app.patch('*', function (req, res) {
+  let resp = {
+    status: 404,
+    msg: "path not found"
+  }
+  res.status(404).send(resp);
+});
+app.delete('*', function (req, res) {
+  let resp = {
+    status: 404,
+    msg: "path not found"
+  }
+  res.status(404).send(resp);
+});
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
