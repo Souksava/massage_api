@@ -15,7 +15,9 @@ module.exports = {
             if (resp[0][0].msg) {
                 resp = {
                     status: 201,
-                    msg: resp[0][0].msg
+                    msg: resp[0][0].msg,
+                    title: resp[0][0].title,
+                    message: resp[0][0].message
                 }
             }
             // End
@@ -42,7 +44,9 @@ module.exports = {
             if (resp[0][0].msg) {
                 resp = {
                     status: 201,
-                    msg: resp[0][0].msg
+                    msg: resp[0][0].msg,
+                    title: resp[0][0].title,
+                    message: resp[0][0].message
                 }
             }
             // End
@@ -71,7 +75,9 @@ module.exports = {
             if (resp[0][0].msg) {
                 resp = {
                     status: 201,
-                    msg: resp[0][0].msg
+                    msg: resp[0][0].msg,
+                    title: resp[0][0].title,
+                    message: resp[0][0].message
                 }
             }
             // End

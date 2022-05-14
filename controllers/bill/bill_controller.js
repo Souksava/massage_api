@@ -14,7 +14,9 @@ module.exports = {
             if (resp[0][0].msg) {
                 resp = {
                     status: 201,
-                    msg: resp[0][0].msg
+                    msg: resp[0][0].msg,
+                    title: resp[0][0].title,
+                    message: resp[0][0].message
                 }
             }
             // End
@@ -41,7 +43,9 @@ module.exports = {
             if (resp[0][0].msg) {
                 resp = {
                     status: 201,
-                    msg: resp[0][0].msg
+                    msg: resp[0][0].msg,
+                    title: resp[0][0].title,
+                    message: resp[0][0].message
                 }
             }
             // End
@@ -52,6 +56,20 @@ module.exports = {
             if (conn) conn.release();
             res.json(resp);
             console.log(resp);
+        }
+    },
+    getStatus: async (req, res) => {
+        let conn, resp;
+
+        try {
+            conn = await pool.getConnection();
+            resp = await conn.query("call get_Status()");
+        } catch (error) {
+            conn.end();
+            return res.status(500).json(error);
+        } finally {
+            if (conn) conn.release();
+            res.json(resp[0]);
         }
     },
 }
